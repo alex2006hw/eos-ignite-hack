@@ -21,6 +21,5 @@
 ![seller and buyer](./assets/oss.png)
 
 ### Refs
-- Frame work using [React-starter-kit](https://github.com/kriasoft/react-starter-kit) for UI/UX
-- Smart-Contract using [Aphrodite](https://github.com/airbnb/hypernova) for Virtual Machine
-- EOS [tutorials](https://bitbucket.org/alexcompanies/tutorial-eos) online
+- EOS [tutorials](https://developers.eos.io/eosio-home/docs/introduction) online
+- Orignal [fork](https://github.com/EOSIO/eosio-project-demux-example) code
