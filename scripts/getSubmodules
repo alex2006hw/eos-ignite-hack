@@ -1,0 +1,3 @@
+([ ! -d frontend ] && git clone git@bitbucket.org:alexcompanies/ossv1-eos-frontend.git frontend ) &
+
+wait

@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -o errexit
+
+# make sure everything is clean and well setup
+echo "[runme] First time setup"
+
+echo "=== start of first time setup ==="
+
+# change to script's directory
+cd "$(dirname "$0")"
+
+# make sure Docker and Node.js is installed
+if [ ! -x "$(command -v docker)" ] ||
+   [ ! -x "$(command -v node)" ]; then
+    echo ""
+    echo -e "\033[0;31m[Error with Exception]\033[0m"
+    echo "Please make sure Docker and Node.js are installed"
+    echo ""
+    echo "Install Docker: https://docs.docker.com/docker-for-mac/install/"
+    echo "Install Node.js: https://nodejs.org/en/"
+    echo ""
+    exit
+fi
+dockerPull () {
+# download eosio/eos-dev:v1.4.2 image
+echo "=== pull eosio/eos-dev image v1.4.2 from docker hub ==="
+docker pull eosio/eos-dev:v1.4.2 &
+
+# force remove the previous eosio container if it exists
+# create a clean data folder in the eosio_docker to preserve block data
+echo "=== setup/reset data for eosio_docker ==="
+docker stop eosio_blog_container || true && docker rm --force eosio_blog_container || true
+sudo rm -rf "./eosio_docker/data"
+mkdir -p "./eosio_docker/data"
+
+# download mongo:4.0 image
+echo "=== pull mongo image 4.0 from docker hub ==="
+docker pull mongo:4.0 &
+
+# force remove the previous mongodb container if it exists
+echo "=== setup/reset data for mongo_blog_container ==="
+docker stop mongo_blog_container || true && docker rm --force mongo_blog_container || true
+
+wait
+}
+
+dockerPull
+
+# start mongodb and put in background
+echo "[runme] Starting mongodb"
+./start_mongodb_docker.sh --nolog
+
+# start blockchain and put in background
+echo "[runme] Starting eosio docker"
+./start_eosio_docker.sh --nolog
+
+# wait until eosio blockchain to be started
+until $(curl --output /dev/null \
+             --silent \
+             --head \
+             --fail \
+             localhost:8888/v1/chain/get_info)
+do
+  echo "Waiting for eosio blockchain to be started..."
+  sleep 2s
+done

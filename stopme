@@ -1,0 +1,2 @@
+#docker stop eosio_blog_container mongo_blog_container
+docker rm -f eosio_blog_container mongo_blog_container
