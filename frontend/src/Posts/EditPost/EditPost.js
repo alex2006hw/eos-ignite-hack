@@ -25,7 +25,7 @@ class EditPost extends Component {
             name='title'
             onChange={(e) => this.handleOnChange(e, 'title')}
             value={this.state.title}
-            placeholder='Wallet Public Key'
+            placeholder='Title'
           />
           <textarea
             className='margin-bottom-15'
@@ -33,14 +33,14 @@ class EditPost extends Component {
             rows='6'
             onChange={(e) => this.handleOnChange(e, 'content')}
             value={this.state.content}
-            placeholder='{ index: "publicPKI", size: "multiples of 1GB", speed: "10Gbits/sec", price: "1gas", location: "94112"}'
+            placeholder='Content'
           />
           <input
             className='margin-bottom-15'
             name='tag'
             onChange={(e) => this.handleOnChange(e, 'tag')}
             value={this.state.tag}
-            placeholder='Search LABELS'
+            placeholder='Tag'
           />
           <button
             onClick={this.handlePostSave}

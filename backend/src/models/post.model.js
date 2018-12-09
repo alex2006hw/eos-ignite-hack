@@ -24,7 +24,6 @@ try {
     }
   })
   Post = mongoose.model('Post', PostSchema)
-  console.log('1.backend post-model : ', PostSchema)
 } catch (e) {
   Post = mongoose.model('Post')
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import EditPost from '../EditPost/EditPost'
+import EditPost from 'Posts/EditPost/EditPost'
 
 class Post extends Component {
   state = {

@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Token from "token-memory";
 
-import EOSIOClient from './utils/eosio-client'
-import IOClient from './utils/io-client'
-import { updatePostsForCreateAndEdit, updatePostsForLike, updatePostsForDelete } from './utils/posts-updater'
-import CreatePost from './CreatePost/CreatePost'
-import Posts from './Posts/Posts'
+import EOSIOClient from 'utils/eosio-client'
+import IOClient from 'utils/io-client'
+import { updatePostsForCreateAndEdit, updatePostsForLike, updatePostsForDelete } from 'utils/posts-updater'
+import CreatePost from 'CreatePost/CreatePost'
+import Posts from 'Posts/Posts'
 
 class App extends Component {
   state = {
-    pageTitle: 'OSS StarBase Alpha - Establishing Connection ...',
     createOpen: false,
-    token: '',
-    id: '',
     posts: []
   }
 
@@ -27,14 +23,6 @@ class App extends Component {
 
   // Enable Realtime updates via Socket.io
   async componentDidMount () {
-    Token(({token, id}) => {
-      token.get('id').once(idFound => {
-        if ( id === idFound) {
-          const pageTitle = 'OSS StarBase Alpha - Online'
-          this.setState({token, id: idFound, pageTitle})
-        }
-      })
-    });
     this.loadPosts()
     this.io.onMessage('createpost', (post) => {
       this.setState((prevState) => ({ posts: updatePostsForCreateAndEdit(prevState, post) }))
@@ -139,43 +127,28 @@ class App extends Component {
       createOpen: !prevState.createOpen
     }))
   }
-  renderCards () {
-    return (
-      <div className='cards'>
-        <Posts
-            posts={this.state.posts}
-            handleOnChange={this.handleOnChange}
-            deletePost={this.deletePost}
-            editPost={this.editPost}
-            likePost={this.likePost}
-          />
-      </div>
-    )
-  }
 
-  render = () => {
+  render () {
     return (
-      <div className='main'>
-        <div className={`layoutStandard ${this.state.createOpen ? 'createOpen' : ''}`}>
-          <div className='logo'>
-            {this.state.pageTitle}
-          </div>
-          <div className='toggleCreate' onClick={this.toggleCreate} >
-                <CreatePost createPost={this.createPost} />
-          </div>
-          {this.renderCards()}
-          <div className='videoplayer'>
-            <video preload='auto' autoPlay={true} loop={true} muted={true} width="auto" height="auto">
-                <source src='./assets/videos/oss-datacenter.mp4' type='video/mp4'></source>
-                <source src='./assets/videos/oss-datacenter.webm' type='video/webm'></source>
-                <source src='./assets/videos/oss-datacenter.ogv' type='video/ogg'></source>
-            </video>
+      <div className={`layoutStandard ${this.state.createOpen ? 'createOpen' : ''}`}>
+        <div className='logo'>Hackathon Starter</div>
+        <div className='main'>
+          <div className='toggleCreate' onClick={this.toggleCreate} />
+          <CreatePost createPost={this.createPost} />
+          <div className='cards'>
+            <Posts
+              posts={this.state.posts}
+              handleOnChange={this.handleOnChange}
+              deletePost={this.deletePost}
+              editPost={this.editPost}
+              likePost={this.likePost}
+            />
           </div>
         </div>
       </div>
     )
   }
 }
-App.displayName = 'OSS' // Tell React Dev Tools the component name
+App.displayName = 'App' // Tell React Dev Tools the component name
 
 export default App
