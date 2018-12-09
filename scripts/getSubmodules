@@ -1,0 +1,2 @@
+([ ! -d backend-oss ] && git clone git@bitbucket.org:alexlession/20181208-eos-virtual-hack-backend-oss.git backend-oss ) &
+wait

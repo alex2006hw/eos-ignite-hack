@@ -1,0 +1,52 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "build": "./node_modules/@babel/cli/bin/babel.js src -s -D -d dist",
+    "postbuild": "cp .env dist/",
+    "lint": "standard | snazzy"
+  },
+  "dependencies": {
+    "buffer": "^5.2.1",
+    "cors": "2.8.4",
+    "demux": "2.0.0",
+    "demux-eos": "2.0.0",
+    "dotenv": "6.0.0",
+    "express": "4.16.3",
+    "go-ipfs-dep": "0.4.18",
+    "gun": "^0.9.99999",
+    "gun-level": "^6.0.4",
+    "gun-unset": "^1.0.1",
+    "ipfs": "0.33.1",
+    "ipfs-api": "26.1.2",
+    "ipfsd-ctl": "0.40.0",
+    "level-hyper": "^2.0.0",
+    "levelup": "^3.1.1",
+    "mongodb": "3.1.1",
+    "mongoose": "5.2.3",
+    "noise-network": "^1.0.1",
+    "orbit-db": "0.19.9",
+    "pretty-error": "^2.1.1",
+    "random-js": "^1.0.8",
+    "safe-buffer": "^5.1.2",
+    "siphash24": "^1.1.1",
+    "socket.io": "2.1.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.2",
+    "@babel/core": "7.1.2",
+    "@babel/node": "7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "babel-eslint": "10.0.1",
+    "nodemon": "1.18.1",
+    "snazzy": "7.1.1",
+    "standard": "11.0.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  }
+}

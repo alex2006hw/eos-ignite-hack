@@ -27,7 +27,7 @@ docker pull eosio/eos-dev:v1.4.2
 # create a clean data folder in the eosio_docker to preserve block data
 echo "=== setup/reset data for eosio_docker ==="
 docker stop eosio_blog_container || true && docker rm --force eosio_blog_container || true
-rm -rf "./eosio_docker/data"
+sudo rm -rf "./eosio_docker/data"
 mkdir -p "./eosio_docker/data"
 
 # download mongo:4.0 image
@@ -39,15 +39,15 @@ echo "=== setup/reset data for mongo_blog_container ==="
 docker stop mongo_blog_container || true && docker rm --force mongo_blog_container || true
 
 # set up node_modules for frontend
-echo "=== npm install package for frontend react app ==="
+echo "=== npm install packpage for frontend react app ==="
 # change directory to ./frontend
-cd "./frontend"
+cd "./frontend-web"
 npm install
 cd "../"
 
 # set up node_modules for backend
-echo "=== npm install package for backend react app ==="
+echo "=== npm install packpage for frontend react app ==="
 # change directory to ./backend
-cd "./backend"
+cd "./backend-eos"
 npm install
 cd "../"

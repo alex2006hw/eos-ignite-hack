@@ -34,3 +34,5 @@ yarn-error.log*
 jsconfig.json
 .history
 .vscode/settings.json
+backend-oss/
+backend-oss2/

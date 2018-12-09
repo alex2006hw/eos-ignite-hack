@@ -1,13 +1,26 @@
 {
-  "name": "eos-virtual-hack",
+  "name": "ossv1-eos",
   "version": "1.0.0",
-  "description": "",
+  "description": "![oss-icon](./assets/oss-icon.png) # Open Secure Storage ## EOS Smart-Contract for storage ---------------------- ### Why",
   "main": "index.js",
   "scripts": {
-    "unlock": "find . -name package-lock.json | xargs rm -f",
-    "start": "./runme"
+    "start": "npm install && npm-run-all -l -p backend frontend backend-oss frontend-mobile",
+    "rundocker": "./runme",
+    "backend": "cd backend-eos && npm install && npm run build",
+    "backend-oss": "cd backend-oss && npm install && npm run build",
+    "frontend": "cd frontend-web && npm start",
+    "frontend-mobile": "cd frontend-mobile&& npm install",
+    "unlock": "find . -name package-lock.json | xargs rm -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/alexcompanies/ossv1-eos.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/alexcompanies/ossv1-eos#readme",
+  "devDependencies": {
+    "npm-run-all": "4.1.5"
+  }
 }
