@@ -1,0 +1,13 @@
+{
+  "name": "eos-virtual-hack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "unlock": "find . -name package-lock.json | xargs rm -f",
+    "start": "./runme"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
