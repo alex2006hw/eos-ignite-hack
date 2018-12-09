@@ -1,0 +1,36 @@
+{
+  "name": "backend-oss2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "build": "./node_modules/@babel/cli/bin/babel.js src -s -D -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "gun": "^0.9.99999",
+    "gun-level": "^6.0.4",
+    "gun-unset": "^1.0.1",
+    "level-hyper": "^2.0.0",
+    "leveldown": "^4.0.1",
+    "levelup": "^3.1.1",
+    "pretty-error": "^2.1.1",
+    "random-js": "^1.0.8",
+    "safe-buffer": "^5.1.2",
+    "siphash24": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.2",
+    "@babel/core": "7.1.2",
+    "@babel/node": "7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "babel-eslint": "10.0.1",
+    "nodemon": "1.18.1",
+    "snazzy": "7.1.1",
+    "standard": "11.0.1"
+  }
+}

@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   helloWorld = async () => {
+    var options = { id: 'eos-ignite-hack', peers: 'http://dev01.alex2006hw.com:8080/gun' }
     await Token(({id, root, token, broadcast, listen}) => {
       // const chain = {id, root, token, broadcast, listen}
       // this.setState({chain})
@@ -60,7 +61,7 @@ class App extends Component {
           });
     //     }
     //   })
-    })
+    }, options)
   }
   // Load posts
   loadPosts = async () => {

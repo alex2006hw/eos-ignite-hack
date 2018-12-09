@@ -4,12 +4,20 @@
   "description": "![oss-icon](./assets/oss-icon.png) # Open Secure Storage ## EOS Smart-Contract for storage ---------------------- ### Why",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && npm-run-all -l -p backend frontend backend-oss frontend-mobile",
-    "rundocker": "./runme",
-    "backend": "cd backend-eos && npm install && npm run build",
-    "backend-oss": "cd backend-oss && npm install && npm run build",
-    "frontend": "cd frontend-web && npm start",
-    "frontend-mobile": "cd frontend-mobile&& npm install",
+    "build": "./node_modules/npm-run-all/bin/npm-run-all/index.js -l -p build:backend build:frontend",
+    "build:backend": "./node_modules/npm-run-all/bin/npm-run-all/index.js -l -p build:eos build:oss",
+    "build:eos": "cd backend-eos && npm install && npm run build",
+    "build:oss": "cd backend-oss && npm install && npm run build",
+    "build:frontend": "./node_modules/npm-run-all/bin/npm-run-all/index.js -l -p build:web build:mobile",
+    "build:web": "cd frontend-web && npm install && npm run build",
+    "build:mobile": "cd frontend-mobile && npm install && npm run build",
+    "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js -l start:docker -p start:eos start:oss",
+    "start:docker": "./runme",
+    "start:eos": "./node_modules/pm2/bin/pm2 start build/eos/index.js --name eos -i 1",
+    "start:oss": "./node_modules/pm2/bin/pm2 start build/oss/index.js --name oss -i 1",
+    "poststart": "npm run sleep",
+    "sleep": "while(true);do sleep 100s;done",
+    "stop": "./node_modules/pm2/bin/pm2 kill",
     "unlock": "find . -name package-lock.json | xargs rm -f"
   },
   "repository": {
@@ -22,5 +30,8 @@
   "homepage": "https://bitbucket.org/alexcompanies/ossv1-eos#readme",
   "devDependencies": {
     "npm-run-all": "4.1.5"
+  },
+  "dependencies": {
+    "pm2": "^3.2.2"
   }
 }

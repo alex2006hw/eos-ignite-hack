@@ -1,0 +1,2 @@
+[ ! -d ./sourcemap ] && mkdir ./sourcemap
+./node_modules/react-native-cli/index.js bundle --dev false --platform ios --assets-dest ./ios --entry-file ./index.js --bundle-output ./ios/main.jsbundle   --sourcemap-output ./sourcemap/main.jsbundle.map
