@@ -11,21 +11,21 @@ class ActionHandler extends AbstractActionHandler {
     // CONNECTION EVENTS
     // Connection successful
     mongoose.connection.on('connected', () => {
-      console.info(`Mongoose default connection open to ${uri}`)
+      console.log(`Mongoose default connection open to ${uri}`)
     })
 
     // Connection throws an error
-    mongoose.connection.on('error', console.error.bind(console, 'Mongoose default connection error:'))
+    mongoose.connection.on('error', console.log.bind(console, 'Mongoose default connection error:'))
 
     // Connection is disconnected
     mongoose.connection.on('disconnected', () => {
-      console.info('Mongoose default connection disconnected')
+      console.log('Mongoose default connection disconnected')
     })
 
     // Close the connection if the node process is terminated
     process.on('SIGINT', () => {
       mongoose.connection.close(() => {
-        console.info('Mongoose default connection disconnected through app termination')
+        console.log('Mongoose default connection disconnected through app termination')
         process.exit(0)
       })
     })
@@ -37,7 +37,7 @@ class ActionHandler extends AbstractActionHandler {
     try {
       await handle(state, context)
     } catch (err) {
-      console.error(err)
+      console.log(err)
     }
   }
 
@@ -50,7 +50,7 @@ class ActionHandler extends AbstractActionHandler {
         isReplay
       }, { upsert: true }).exec()
     } catch (err) {
-      console.error(err)
+      console.log(err)
     }
   }
 
@@ -67,7 +67,7 @@ class ActionHandler extends AbstractActionHandler {
       }
       return { blockNumber: 0, blockHash: '' }
     } catch (err) {
-      console.error(err)
+      console.log(err)
     }
   }
 }
