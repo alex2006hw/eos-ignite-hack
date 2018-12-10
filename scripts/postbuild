@@ -1,5 +1,9 @@
 mkdir -p build/eos build/oss/public
+
+( cp -Ra backend-eos/package.json build/eos/ && cd build/eos;npm install ) &
+( cp -Ra backend-oss/package.json build/oss/ && cd build/oss;npm install ) &
+
+cp -Ra backend-eos/.env build/eos/
 cp -Ra backend-eos/dist/* build/eos/
 cp -Ra backend-oss/dist/* build/oss/
 cp -Ra frontend-web/build/* build/oss/public/
-cp package.json build/
