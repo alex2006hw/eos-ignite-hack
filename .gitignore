@@ -34,3 +34,7 @@ yarn-error.log*
 jsconfig.json
 .history
 .vscode/settings.json
+
+# builds
+build/
+frontend-mobile/sourcemap/
