@@ -48,11 +48,11 @@ dockerPull
 
 # start mongodb and put in background
 echo "[runme] Starting mongodb"
-./start_mongodb_docker.sh --nolog
+./scripts/start_mongodb_docker.sh --nolog
 
 # start blockchain and put in background
 echo "[runme] Starting eosio docker"
-./start_eosio_docker.sh --nolog
+./scripts/start_eosio_docker.sh --nolog
 
 # wait until eosio blockchain to be started
 until $(curl --output /dev/null \
