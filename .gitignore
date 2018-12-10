@@ -38,3 +38,5 @@ jsconfig.json
 # builds
 build/
 frontend-mobile/sourcemap/
+chaindata/
+radata/
