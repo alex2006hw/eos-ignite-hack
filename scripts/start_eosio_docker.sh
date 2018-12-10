@@ -2,7 +2,7 @@
 set -o errexit
 
 # change to script's directory
-cd "$(dirname "$0")/eosio_docker"
+cd "$(dirname "$0")/../eosio_docker"
 
 if [ -e "data/initialized" ]
 then
