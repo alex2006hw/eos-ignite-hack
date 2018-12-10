@@ -1,5 +1,5 @@
 {
-  "name": "ossv1-eos",
+  "name": "eos-ignite-hack",
   "version": "1.0.0",
   "description": "![oss-icon](./assets/oss-icon.png) # Open Secure Storage ## EOS Smart-Contract for storage ---------------------- ### Why",
   "main": "index.js",
@@ -12,6 +12,7 @@
     "build:web": "cd frontend-web && npm install && npm run build",
     "build:mobile": "cd frontend-mobile && npm install && npm run build",
     "postbuild": "./scripts/postbuild",
+    "postinstall": "./scripts/postinstall",
     "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js -l start:docker -p start:eos start:oss",
     "start:docker": "./runme",
     "start:eos": "./node_modules/pm2/bin/pm2 start build/eos/index.js --name eos -i 1",

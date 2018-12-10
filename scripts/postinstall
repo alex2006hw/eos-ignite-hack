@@ -1,0 +1,4 @@
+(cd backend-eos && npm install) &
+(cd backend-oss && npm install) &
+(cd frontend-web && npm install) &
+(cd frontend-mobile && npm install) &
